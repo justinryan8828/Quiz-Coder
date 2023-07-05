@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 25px;
+  color: aquamarine;
+  background-color: black;
+}
+
+.card {
+  font-size: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card a {
+  color: aquamarine;
+}
+
+h1 {
+  color: antiquewhite;
+  font-size: 75px;
+  text-align: center;
+}
+
+#question-container {
+  border: 5px solid antiquewhite;
+}
+
+.command {
+  margin: 0 auto;
+  width: 100px;
+}
+
+button:hover {
+  color: black;
+  background-color: aquamarine;
+}
+
+.hide {
+  display: none;
+}
+
+#start {
+  margin: 0 auto;
+}
+
+#start button {
+  display: block;
+  width: 100px;
+  margin: 0 auto;
+}
