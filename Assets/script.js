@@ -1,28 +1,33 @@
 var questions = [
   {
-    question: "Question 1?",
-    answer: "Answer 1!",
-    options: ["1", "Answer 1!", "3", "4"],
+    question: "What is javaScript?",
+    answer: "JavaScript is a very powerful client-side scripting language.",
+    options: [
+      "Its a cool coffee shop.",
+      "JavaScript is a very powerful client-side scripting language.",
+      "Basically the same thing as crypto.",
+      "Will Smiths first cousin.",
+    ],
   },
   {
-    question: "Question 2?",
-    answer: "Answer 2!",
-    options: ["1", "2", "Answer 2!", "4"],
+    question: "What is not a javaScript data type?",
+    answer: "Latte",
+    options: ["Number", "String", "Latte", "Boolean"],
   },
   {
-    question: "Question 3?",
-    answer: "Answer 3!",
-    options: ["Answer 3!", "2", "3", "4"],
+    question: "What company developed javaScript?",
+    answer: "Netscape",
+    options: ["Netscape", "HBO", "Franks Autosales", "Trico"],
   },
   {
-    question: "Question 4?",
-    answer: "Answer 4!",
-    options: ["1", "2", "3", "Answer 4!"],
+    question: "Does JavaScript support automatic type conversion?",
+    answer: "Yes",
+    options: ["Yes", "No", "Maybe", "So"],
   },
   {
-    question: "Question 5?",
-    answer: "Answer 5!",
-    options: ["1", "Answer 5!", "3", "4"],
+    question: "Which is not a looping structure in JavaScript?",
+    answer: "Fruit",
+    options: ["While", "Fruit", "Do-While Loops", "For"],
   },
 ];
 
@@ -33,10 +38,10 @@ var answerContainer = document.querySelector("#answer-buttons");
 var questionResult = document.querySelector("#question-result");
 var count = 0;
 var nextButton = document.querySelector("#next-button");
-var scoreCount = 0;
 var timerCount = 100;
 var timerIntervals;
 var timer = document.querySelector("#timer");
+var viewHighscores = document.querySelector("#viewHighscores");
 
 startButton.addEventListener("click", function () {
   startSection.classList.add("hide");
@@ -49,8 +54,8 @@ function startTimer() {
   timer.textContent = timerCount;
   timerIntervals = setInterval(function () {
     if (timerCount <= 0) {
-      endGame();
       clearInterval(timerIntervals);
+      endGame();
     }
     timerCount--;
     timer.textContent = timerCount;
@@ -67,8 +72,6 @@ answerContainer.addEventListener("click", function (event) {
     if (answer === questions[count].answer) {
       console.log("CORRRECT");
       questionResult.textContent = "CORRECT";
-      scoreCount += 10;
-      console.log(scoreCount);
     } else {
       questionResult.textContent = "INCORRECT";
       timerCount -= 10;
@@ -96,7 +99,7 @@ function displayQuestion() {
 
 nextButton.addEventListener("click", function () {
   console.log(count, questions.length);
-  if (count == questions.length) {
+  if (count == questions.length - 1) {
     endGame();
   }
   nextButton.classList.add("hide");
@@ -107,14 +110,14 @@ nextButton.addEventListener("click", function () {
 });
 
 function endGame() {
+  localStorage.setItem("newestScore", timerCount);
   window.location.href = "./highscores.html";
 }
 
-// Need to make answers pop up and timer to start when start clicks
-// Need to show if answer if correct or incorrect
-// If wrong need to subtract 10 seconds from timer
-// Need to make next button work after each question is right or wrong
-// Need to make it document some sort of point system
-// Need to make next button bring up next question and answers
-// Need to make quiz end when timer ends
-// Need to allow you to put name when quiz is over and store your score under highscores page
+function goToHighscores() {
+  clearInterval(timerIntervals);
+  localStorage.setItem("newestScore", -1);
+  window.location.href = "./highscores.html";
+}
+
+viewHighscores.addEventListener("click", goToHighscores);
