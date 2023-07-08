@@ -76,16 +76,11 @@ answerContainer.addEventListener("click", function (event) {
   if (selected.matches("button")) {
     var answer = selected.textContent;
 
-    console.log(answer, questions[count].answer);
-
     if (answer === questions[count].answer) {
-      console.log("CORRRECT");
       questionResult.textContent = "CORRECT";
     } else {
       questionResult.textContent = "INCORRECT";
       timerCount -= 10;
-      console.log(timerCount);
-      console.log("INCORRECT");
     }
     nextButton.classList.remove("hide");
     answerContainer.classList.add("hide");
@@ -101,7 +96,6 @@ function displayQuestion() {
   question.textContent = questions[count].question;
 
   for (let i = 0; i < questions[count].options.length; i++) {
-    console.log(currentQuestion.options[i]);
     let answerButton = document.createElement("button");
     answerButton.textContent = currentQuestion.options[i];
     answerContainer.appendChild(answerButton);
@@ -111,7 +105,6 @@ function displayQuestion() {
 // next button needs to take me to next questions and then at end take me to highscores html
 
 nextButton.addEventListener("click", function () {
-  console.log(count, questions.length);
   if (count == questions.length - 1) {
     endGame();
   }
