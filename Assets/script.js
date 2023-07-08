@@ -1,3 +1,4 @@
+// creating my questions
 var questions = [
   {
     question: "What is javaScript?",
@@ -31,6 +32,7 @@ var questions = [
   },
 ];
 
+// Need to call 
 var startButton = document.querySelector("#start-button");
 var startSection = document.querySelector("#start");
 var questionContainer = document.querySelector(".container");
