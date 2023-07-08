@@ -1,20 +1,21 @@
+/* Set Margain and text and color background for whole site */
 * {
   margin: 0;
   padding: 25px;
   color: aquamarine;
   background-color: black;
 }
-
+/* Set header spacing */
 .card {
   font-size: 50px;
   display: flex;
   justify-content: space-between;
 }
-
+/* set text for main header */
 .card a {
   color: aquamarine;
 }
-
+/* h1 is Welcome */
 h1 {
   color: antiquewhite;
   font-size: 75px;
@@ -29,12 +30,12 @@ h1 {
   margin: 0 auto;
   width: 100px;
 }
-
+/* Change the buttons when you hover over them */
 button:hover {
   color: black;
   background-color: aquamarine;
 }
-
+/* create a hide class */
 .hide {
   display: none;
 }
@@ -42,7 +43,7 @@ button:hover {
 #start {
   margin: 0 auto;
 }
-
+/* start button */
 #start button {
   display: block;
   width: 100px;

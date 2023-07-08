@@ -32,7 +32,8 @@ var questions = [
   },
 ];
 
-// Need to call 
+// Need to call to my start button and my start section
+
 var startButton = document.querySelector("#start-button");
 var startSection = document.querySelector("#start");
 var questionContainer = document.querySelector(".container");
@@ -45,12 +46,16 @@ var timerIntervals;
 var timer = document.querySelector("#timer");
 var viewHighscores = document.querySelector("#viewHighscores");
 
+// create event for start button
+
 startButton.addEventListener("click", function () {
   startSection.classList.add("hide");
   questionContainer.classList.remove("hide");
   displayQuestion();
   startTimer();
 });
+
+// figure out your timer bro
 
 function startTimer() {
   timer.textContent = timerCount;
@@ -63,6 +68,8 @@ function startTimer() {
     timer.textContent = timerCount;
   }, 1000);
 }
+
+// figure out how to get answers to show with tutor
 
 answerContainer.addEventListener("click", function (event) {
   var selected = event.target;
@@ -85,6 +92,8 @@ answerContainer.addEventListener("click", function (event) {
   }
 });
 
+// how do I display the questions
+
 function displayQuestion() {
   answerContainer.innerHTML = "";
   var question = document.querySelector("#question");
@@ -99,6 +108,8 @@ function displayQuestion() {
   }
 }
 
+// next button needs to take me to next questions and then at end take me to highscores html
+
 nextButton.addEventListener("click", function () {
   console.log(count, questions.length);
   if (count == questions.length - 1) {
@@ -110,6 +121,8 @@ nextButton.addEventListener("click", function () {
   count++;
   displayQuestion();
 });
+
+// endgame should take me to highscores html
 
 function endGame() {
   localStorage.setItem("newestScore", timerCount);
