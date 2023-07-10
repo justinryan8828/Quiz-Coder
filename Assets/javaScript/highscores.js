@@ -31,6 +31,8 @@ function displayScores() {
   scoreContainer.appendChild(scoreList);
 }
 // function for final score
+displayScores();
+
 function finishedScore(event) {
   event.preventDefault();
   currentScores = JSON.parse(localStorage.getItem("allScores"));
@@ -43,9 +45,9 @@ function finishedScore(event) {
     initials: inputinitials.value.trim(),
     score: newestScore,
   };
+
   currentScores.push(newHighscore);
   localStorage.setItem("allScores", JSON.stringify(currentScores));
-  displayScores();
 }
 
 let newestScore = JSON.parse(localStorage.getItem("newestScore"));
