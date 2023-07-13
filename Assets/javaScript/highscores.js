@@ -9,6 +9,10 @@ var backButton = document.querySelector("#back-button");
 function displayScores() {
   scoreContainer.innerHTML = "";
   currentScores = JSON.parse(localStorage.getItem("allScores"));
+  if (currentScores === null) {
+    currentScores = [];
+  }
+
   let scoreList = document.createElement("ol");
 
   // create li, h3, p tag for highscores list
@@ -35,6 +39,7 @@ displayScores();
 
 function finishedScore(event) {
   event.preventDefault();
+  console.log("finishedScore function called");
   currentScores = JSON.parse(localStorage.getItem("allScores"));
   if (currentScores === null) {
     currentScores = [];
@@ -58,6 +63,24 @@ backButton.addEventListener("click", function () {
   window.location.href = "./index.html";
 });
 
+function finishedScore(event) {
+  event.preventDefault();
+  currentScores = JSON.parse(localStorage.getItem("allScores"));
+  if (currentScores === null) {
+    currentScores = [];
+  }
+
+  newestScore = JSON.parse(localStorage.getItem("newestScore"));
+  let newHighscore = {
+    initials: inputinitials.value.trim(),
+    score: newestScore,
+  };
+
+  currentScores.push(newHighscore);
+  localStorage.setItem("allScores", JSON.stringify(currentScores));
+
+  displayScores(); // Call the displayScores function to update the displayed scores
+}
 // need to make a button to take me back to main html
 
 function backButton() {
